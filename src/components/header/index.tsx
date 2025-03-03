@@ -11,11 +11,10 @@ const Header: React.FC<HeaderProps> = ({ items }) => {
     const location = useLocation();
 
     return (
-        <header className="bg-[#F9EAD7] text-gray-700 p-0 w-full shadow-md">
+        <header className="bg-[#F9EAD7] text-gray-700 p-4 w-full shadow-md">
             <div className="container mx-auto flex justify-between items-center">
                 <Link to="/" className="flex items-center space-x-3">
-                    <img src="img/logo.png" className="h-24" alt="TOOB" />
-                    <span>Handmade TOOB blankets for child bike seats.</span>
+                    <img src="img/logo.png" className="h-18" alt="TOOB" />
                 </Link>
 
                 <nav className="pr-4">

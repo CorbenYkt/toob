@@ -1,10 +1,13 @@
 import React from "react";
+import { ImageCarousel } from "@/components/carousel";
 
 const About: React.FC = () => {
     return (
         <div className="max-w-3xl mx-auto p-4">
-            <p className="text-2xl font-bold">About</p>
-            <img src="img/img1.jpg" alt="Картинка" className="float-left mr-4 mb-2 w-40 h-auto rounded-lg shadow-md" />
+            <p className="text-2xl font-bold">About</p><br></br>
+            <div className="float-left mr-3 mb-2 mt-2 w-64 h-auto rounded-lg shadow-md">
+                <ImageCarousel />
+            </div>
 
             <p className="text-gray-800 text-justify">
                 Hello fellow bike mums and bike dads! My name is Dasha. I am mum of Thomas (7) and Mila (4), and I have a huge passion for bikes.
@@ -17,7 +20,7 @@ const About: React.FC = () => {
                 I am now offering custom-made TOOB blankets to order, to help other mums and dads keep their little precious cargo warm.</p>
             <p className="font-bold text-right">
                 Thank you for your support!</p>
-        </div>
+        </div >
     );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as  Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -25,10 +25,9 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/buy" element={<Buy />} />
           </Routes>
-
         </main>
 
-        <Footer />
+        <Footer items={items} />
       </div>
     </SidebarProvider>
   );
