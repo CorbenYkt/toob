@@ -1,4 +1,4 @@
-import { HelpCircle, Home, House, LucideShoppingBasket, Settings } from "lucide-react";
+import { HelpCircle, House, LucideShoppingBasket } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
     Sidebar,
