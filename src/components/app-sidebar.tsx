@@ -30,7 +30,7 @@ export const items: ItemType[] = [
     },
     {
         title: "Buy",
-        url: "/buy",
+        url: "/checkout",
         icon: LucideShoppingBasket,
     },
 ];

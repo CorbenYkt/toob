@@ -5,10 +5,10 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { SidebarProvider } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
-import { items } from "@/components/app-sidebar";
+import { items } from "./components/app-sidebar";
 import About from "./pages/about";
 import Home from "./pages/home";
-import Buy from "./pages/buy";
+import Checkout from "./pages/checkout";
 
 const App: React.FC = () => {
 
@@ -23,7 +23,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Navigate to="/about" replace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/buy" element={<Buy />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
 

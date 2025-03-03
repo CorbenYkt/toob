@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const images = ["./img/img1.jpg", "./img/img2.jpg"];
 
-export function ImageCarousel() {
+const ImageCarousel: React.FC = () => {
+
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
     React.useEffect(() => {
@@ -36,3 +37,5 @@ export function ImageCarousel() {
         </Carousel>
     );
 }
+
+export default ImageCarousel;
