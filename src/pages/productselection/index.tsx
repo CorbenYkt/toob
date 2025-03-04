@@ -23,20 +23,8 @@ const ProductSelection: React.FC = () => {
                     <div className="max-w-1/2">
                         <img className="w-full object-contain border rounded-lg" src={mainImage} alt="" />
                         <br></br>
-                        <div className="flex flex-wrap gap-2">
-                            {Object.values(products).flat().map((img, index) => (
-                                <img key={index}
-                                    className="w-12 h-auto object-cover rounded-lg cursor-pointer border hover:border-[#F25826]"
-                                    src={img}
-                                    alt=""
-                                    onClick={() => setMainImage(img)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex flex-col  ml-4 text-gray-800 text-justify">
                         <select
-                            className="border p-2 w-fit"
+                            className="border p-2 w-full"
                             value={selectedColor}
                             onChange={(e) => {
                                 const color = e.target.value as keyof typeof products;
@@ -48,7 +36,21 @@ const ProductSelection: React.FC = () => {
                                 <option key={color} value={color}>{color}</option>
                             ))}
                         </select>
+
+                    </div>
+                    <div className="flex flex-col  ml-4 text-gray-800 text-justify">
+                        <div className="flex flex-wrap gap-2">
+                            {Object.values(products).flat().map((img, index) => (
+                                <img key={index}
+                                    className="w-12 h-auto object-cover rounded-lg cursor-pointer border hover:border-[#F25826]"
+                                    src={img}
+                                    alt=""
+                                    onClick={() => setMainImage(img)}
+                                />
+                            ))}
+                        </div><br></br>
                         <p>TOOB blankets for child bike seats - handmade in Wellington</p><br></br>
+
                         <p>Specifications
                             Outer material: waterproof and windproof high-quality PUL (PolyUrethane Laminate)
 
