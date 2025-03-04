@@ -8,7 +8,7 @@ import { AppSidebar } from "./components/app-sidebar";
 import { items } from "./components/app-sidebar";
 import About from "./pages/about";
 import Home from "./pages/home";
-import Checkout from "./pages/checkout";
+import ProductSelection from "./pages/productselection";
 
 const App: React.FC = () => {
 
@@ -18,12 +18,12 @@ const App: React.FC = () => {
         <Header items={items} />
         <AppSidebar />
 
-        <main className="flex-1 p-4 flex flex-col items-center justify-center">
+        <main className="flex-1 p-4 min-h-screen">
           <Routes>
             <Route path="/" element={<Navigate to="/about" replace />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/productselection" element={<ProductSelection />} />
           </Routes>
         </main>
 

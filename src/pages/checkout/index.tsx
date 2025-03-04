@@ -1,13 +1,16 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 
-const CheckoutForm = () => {
+interface CheckoutFormProps {
+    product: string;
+    price: number;
+}
+
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ product, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [product, setProduct] = useState("Premium Subscription");
-    const [price, setPrice] = useState(25); // цена в USD
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -16,7 +19,6 @@ const CheckoutForm = () => {
         if (!stripe || !elements) return;
 
         setLoading(true);
-
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)!,
@@ -29,7 +31,6 @@ const CheckoutForm = () => {
             return;
         }
 
-        // Отправляем платеж на сервер
         const res = await fetch("http://localhost:3001/checkout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -48,13 +49,13 @@ const CheckoutForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 shadow-lg rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Оплата товара</h2>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
+            <h2 className="text-xl font-bold mb-4">Payment</h2>
 
             <input
                 type="text"
                 className="border p-2 w-full mb-2"
-                placeholder="Ваше имя"
+                placeholder="Your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -73,10 +74,10 @@ const CheckoutForm = () => {
 
             <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded w-full"
+                className="bg-[#F9EAD7] text-[#F25826] px-4 py-2 rounded w-full font-bold"
                 disabled={!stripe || loading}
             >
-                {loading ? "Обрабатываем..." : `Оплатить $${price}`}
+                {loading ? "Processing..." : `Buy ${price} NZD`}
             </button>
 
             {message && <p className="mt-2 text-red-500">{message}</p>}

@@ -5,7 +5,7 @@ const About: React.FC = () => {
     return (
         <div className="max-w-3xl mx-auto p-4">
             <p className="text-2xl font-bold">About</p><br></br>
-            <div className="w-full max-w-1/2 float-left mr-3 mb-2 mt-2 w-64 h-auto rounded-lg shadow-md">
+            <div className="max-w-1/2 float-left mr-3 mb-2 mt-2 w-64 h-auto rounded-lg shadow-md">
                 <ImageCarousel />
             </div>
 
