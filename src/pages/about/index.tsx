@@ -17,7 +17,7 @@ const About: React.FC = () => {
                 Three years ago, I decided to make an “all year around” blanket to keep my kids warm when they are strapped in to their bike seats. The design is very simple, safe and practical. The blanket is tube-shaped: there are no zips or buckles, it just slips over the bike seat and can be pulled up around the child. It’s much easier than putting on extra layers! The prototype was tested extensively and refined over many chilly summer mornings and evenings, cold winter days and occasional showers. Mila loves this soft blanket so much that she refuses to ride without it.
             </p>
             <p>
-                I am now offering custom-made TOOB blankets to order, to help other mums and dads keep their little precious cargo warm.</p>
+                I am now offering custom-made TOOB blankets to order, to help other mums and dads keep their little precious cargo warm.</p><br /><br />
             <p className="font-bold text-right">
                 Thank you for your support!</p>
         </div >
