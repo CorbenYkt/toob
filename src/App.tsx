@@ -11,14 +11,12 @@ import Home from "./pages/home";
 import ProductSelection from "./pages/productselection";
 
 const App: React.FC = () => {
-
   return (
     <SidebarProvider className="flex flex-col min-h-screen">
-      <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Header items={items} />
         <AppSidebar />
-
-        <main className="flex-1 p-4 min-h-screen">
+        <main className="flex-1 p-4">
           <Routes>
             <Route path="/" element={<Navigate to="/about" replace />} />
             <Route path="/home" element={<Home />} />
@@ -26,7 +24,6 @@ const App: React.FC = () => {
             <Route path="/productselection" element={<ProductSelection />} />
           </Routes>
         </main>
-
         <Footer items={items} />
       </div>
     </SidebarProvider>
