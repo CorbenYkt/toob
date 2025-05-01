@@ -9,23 +9,16 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ items }) => {
   return (
-    <footer className="bg-[#4A342E] text-white p-4 w-full">
-      <div className="max-w-full mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-[#F9EAD7] text-gray-700 p-8 w-full">
+      <div className="max-w-screen-xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h3 className="text-lg font-semibold">TOOB</h3>
-          <p className="mt-2 text-gray-400">
-            Handmade TOOB blankets for child bike seats.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold">Contacts</h3>
+          <h3 className="text-lg font-semibold text-[#F25826]">Contacts</h3>
 
           <ul className="mt-2 space-y-2">
             <li>
               <a
                 href="tel:021 264 7576"
-                className="flex items-center gap-2 text-gray-400 hover:text-white"
+                className="flex items-center gap-2 text-gray-700 hover:text-[#F25826]"
               >
                 <Phone className="w-5 h-5" />
                 021 264 7576
@@ -33,11 +26,11 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
             </li>
             <li>
               <a
-                href="mailto:example@email.com"
-                className="flex items-center gap-2 text-gray-400 hover:text-white"
+                href="mailto:dariya.cherkashina@gmail.com"
+                className="flex items-center gap-2 text-gray-700 hover:text-[#F25826]"
               >
                 <Mail className="w-5 h-5" />
-                dasha@gmail.com
+                dariya.cherkashina@gmail.com
               </a>
             </li>
             <li>
@@ -45,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
                 href="https://www.facebook.com/Toob4bikeseat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-400 hover:text-white"
+                className="flex items-center gap-2 text-gray-700 hover:text-[#F25826]"
               >
                 <Facebook className="w-5 h-5" />
                 Facebook
@@ -55,7 +48,14 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold">Links</h3>
+          <h3 className="text-lg font-semibold text-[#F25826]">TOOB</h3>
+          <p className="mt-2 text-gray-700">
+            Handmade TOOB blankets for child bike seats.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-[#F25826]">Links</h3>
           <ul className="mt-2 space-y-2">
             {items.map((item) => {
               const isActive = location.pathname === item.url;
@@ -64,11 +64,10 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
                 <li key={item.title}>
                   <Link
                     to={item.url}
-                    className={`flex items-center gap-2 transition-colors duration-200 ${
-                      isActive
-                        ? "text-[#F25826] font-bold"
-                        : "hover:text-[#F25826]"
-                    }`}
+                    className={`flex items-center gap-2 transition-colors duration-200 ${isActive
+                      ? "text-[#F25826] font-bold"
+                      : "hover:text-[#F25826]"
+                      }`}
                   >
                     <item.icon />
                     <span>{item.title}</span>
@@ -80,12 +79,12 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
         </div>
       </div>
 
-      <div className="mt-8 text-center text-gray-500 text-sm">
+      <div className="mt-20 text-center text-sm">
         ©2025{" "}
         <a
           href="https://corbenykt.github.io/"
           target="_blank"
-          className="hover:text-white"
+          className="hover:text-[#F25826]"
         >
           Developer's page
         </a>

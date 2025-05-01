@@ -23,11 +23,11 @@ export const items: ItemType[] = [
         url: "/home",
         icon: House,
     },
-    {
-        title: "About",
-        url: "/about",
-        icon: HelpCircle,
-    },
+    // {
+    //     title: "About",
+    //     url: "/about",
+    //     icon: HelpCircle,
+    // },
     {
         title: "Buy",
         url: "/productselection",

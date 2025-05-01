@@ -1,5 +1,7 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
+
+const stripePromise = loadStripe("");
 
 interface CheckoutFormProps {
     product: string;
@@ -7,81 +9,61 @@ interface CheckoutFormProps {
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ product, price }) => {
-    const stripe = useStripe();
-    const elements = useElements();
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!stripe || !elements) return;
-
+    const handleCheckout = async () => {
         setLoading(true);
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement)!,
-            billing_details: { name, email },
+
+        const stripe = await stripePromise;
+
+        const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                Authorization: `Bearer `,
+            },
+            body: new URLSearchParams({
+                success_url: `${window.location.origin}/success`,
+                cancel_url: `${window.location.origin}/cancel`,
+                payment_method_types: "card",
+                line_items: JSON.stringify([
+                    {
+                        price_data: {
+                            currency: "nzd",
+                            product_data: { name: product },
+                            unit_amount: price,
+                        },
+                        quantity: 1,
+                    },
+                ]),
+                mode: "payment",
+            }).toString(),
         });
 
-        if (error) {
-            setMessage(error.message || "Ошибка при создании платежа");
+        const session = await res.json();
+
+        if (session.error) {
+            setMessage(session.error.message);
             setLoading(false);
             return;
         }
 
-        const res = await fetch("http://localhost:3001/checkout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                name,
-                product,
-                price,
-                email,
-                token: paymentMethod.id,
-            }),
-        });
-
-        const data = await res.json();
-        setLoading(false);
-        setMessage(data.message);
+        stripe?.redirectToCheckout({ sessionId: session.id });
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
+        <div className="max-w-md mx-auto p-4">
             <h2 className="text-xl font-bold mb-4">Payment</h2>
-
-            <input
-                type="text"
-                className="border p-2 w-full mb-2"
-                placeholder="Your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-            />
-
-            <input
-                type="email"
-                className="border p-2 w-full mb-2"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-
-            <CardElement className="border p-2 w-full mb-4" />
-
             <button
-                type="submit"
+                onClick={handleCheckout}
                 className="bg-[#F9EAD7] text-[#F25826] px-4 py-2 rounded w-full font-bold"
-                disabled={!stripe || loading}
+                disabled={loading}
             >
-                {loading ? "Processing..." : `Buy ${price} NZD`}
+                {loading ? "Redirecting..." : `Buy ${price} NZD`}
             </button>
-
             {message && <p className="mt-2 text-red-500">{message}</p>}
-        </form>
+        </div>
     );
 };
 

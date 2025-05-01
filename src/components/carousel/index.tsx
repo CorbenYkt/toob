@@ -32,8 +32,6 @@ const ImageCarousel: React.FC = () => {
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            {/* <CarouselPrevious onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)} />
-            <CarouselNext onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)} /> */}
         </Carousel>
     );
 }
