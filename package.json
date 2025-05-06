@@ -26,6 +26,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
     "gh-pages": "^6.3.0",
+    "lint": "^0.8.19",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
