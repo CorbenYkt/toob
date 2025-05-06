@@ -12,17 +12,17 @@ const Header: React.FC<HeaderProps> = ({ items }) => {
 
   return (
     <header className="text-gray-700 p-8 w-full shadow-md">
-      <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-4 md:mr-6 lg:mr-12 xl:mr-20">
+      <div className="max-w-4xl mx-auto flex justify-between items-center">
+        <Link to="/" className="w-3/4 sm:w-1/2 lg:w-[50%]">
           <img
             src="img/logo.png"
-            className="h-32 min-w-[230px] w-auto"
             alt="TOOB logo"
+            className="w-full"
           />
         </Link>
 
-        <nav className="flex items-center justify-start w-full">
-          <ul className="flex space-x-6 ml-6">
+        <nav className="flex items-center justify-start w-full pl-10">
+          <ul className="flex space-x-8">
             {items.map((item) => {
               const isActive = location.pathname === item.url;
 

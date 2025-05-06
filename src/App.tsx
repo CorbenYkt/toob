@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <AppSidebar />
         <main className="flex-1 p-4">
           <Routes>
-            <Route path="/" element={<Navigate to="/about" replace />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="/home" element={<Home />} />
             {/* <Route path="/about" element={<About />} /> */}
             <Route path="/productselection" element={<ProductSelection />} />

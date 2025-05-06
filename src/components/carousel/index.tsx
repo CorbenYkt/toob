@@ -27,7 +27,7 @@ const ImageCarousel: React.FC = () => {
                         <img
                             src={src}
                             alt={`Slide ${index}`}
-                            className="w-80 h-auto rounded-lg shadow-md"
+                            className="h-auto rounded-lg shadow-md"
                         />
                     </CarouselItem>
                 ))}

@@ -48,7 +48,7 @@ const ProductSelection: React.FC = () => {
 
   useEffect(() => {
     sessionStorage.setItem("selectedColor", selectedColor);
-    setMainImage(products[selectedColor].images[0]); // не забудь обновлять mainImage
+    setMainImage(products[selectedColor].images[0]);
   }, [selectedColor]);
 
 
@@ -60,7 +60,7 @@ const ProductSelection: React.FC = () => {
   const currentProduct = products[selectedColor];
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold text-[#F25826]">Buy Toob in New Zealand</h2>
       <br />
 
@@ -84,15 +84,22 @@ const ProductSelection: React.FC = () => {
             ))}
           </select>
           <div className="flex flex-wrap gap-2 mt-4 w-full justify-left">
-            {currentProduct.images.map((src, index) => (
-              <img
-                key={index}
-                className="w-12 h-auto object-cover rounded-lg cursor-pointer border border-amber-500 hover:border-[#F25826]"
-                src={src}
-                alt=""
-                onClick={() => setMainImage(src)}
-              />
-            ))}
+            {Object.entries(products).flatMap(([color, product]) =>
+              product.images.map((src, index) => (
+                <img
+                  key={`${color}-${index}`}
+                  className={`w-12 h-auto object-cover rounded-lg cursor-pointer 
+          border ${mainImage === src ? 'border-[#F25826]' : 'border-amber-500'} 
+          hover:border-[#F25826]`}
+                  src={src}
+                  alt=""
+                  onClick={() => {
+                    setMainImage(src);
+                    setSelectedColor(color as keyof typeof products);
+                  }}
+                />
+              ))
+            )}
           </div>
         </div>
 
@@ -116,8 +123,11 @@ const ProductSelection: React.FC = () => {
               Buy for {currentProduct.price} NZD
             </button> */}
 
-            <Link to={currentProduct.URL} className="bg-[#F9EAD7] text-[#F25826] px-4 py-2 rounded font-bold mt-4">
-              Buy for {currentProduct.price} NZD
+            <Link
+              to={currentProduct.URL}
+              className="bg-[#F9EAD7] text-[#F25826] px-8 py-4 rounded font-bold mt-4 transition-colors duration-300 hover:bg-[#F25826] hover:text-white"
+            >
+              Buy {selectedColor} for {currentProduct.price} NZD
             </Link>
           </div>
         </div>
