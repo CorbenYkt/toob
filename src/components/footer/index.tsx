@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Mail, Phone } from "lucide-react";
+import { Facebook, Mail, Phone, MessageCircle } from "lucide-react";
 import { ItemType } from "@/components/app-sidebar";
 import { Link } from "react-router-dom";
 
@@ -44,6 +44,16 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
                 Facebook
               </a>
             </li>
+            <li>
+              <Link
+                to="/askquestion"
+                className="btn btn-primary flex items-center space-x-2 hover:text-[#F25826]"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>Ask question</span>
+              </Link>
+            </li>
+
           </ul>
         </div>
 

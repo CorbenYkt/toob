@@ -1,44 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CheckoutForm from "@/pages/checkout";
-
-const products = {
-  "Yellow": {
-    images: ["./img/goods/1/type-1.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_28o8yT5phcrH1aw9AB",
-  },
-  "White and Red": {
-    images: ["./img/goods/1/type-2.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_6oE7uP6tl77n5qM3ce",
-  },
-  "Beige Bicycles": {
-    images: ["./img/goods/1/type-3.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_aEUg1l9Fx1N33iEdQT",
-  },
-  "Navy Blue": {
-    images: ["./img/goods/1/type-4.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_3cs4iD8BtbnDcTe004",
-  },
-  "Beige Animals": {
-    images: ["./img/goods/1/type-5.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_7sIcP9eZR1N39H2eUZ",
-  },
-  "Donuts": {
-    images: ["./img/goods/1/type-6.jpg", "./img/goods/1/type-6-2.jpg", "./img/goods/1/type-6-7.jpg", "./img/goods/1/type-6-8.jpg"],
-    price: 160,
-    URL: "https://buy.stripe.com/test_8wM5mH6tlcrHg5q28e",
-  },
-};
+import products from "@/data/products";
 
 const ProductSelection: React.FC = () => {
   const getInitialColor = (): keyof typeof products => {
     const saved = sessionStorage.getItem("selectedColor");
-    return (saved && saved in products) ? (saved as keyof typeof products) : "Yellow";
+    return (saved && saved in products) ? (saved as keyof typeof products) : "Flower TOOB";
   };
 
 
@@ -61,7 +29,7 @@ const ProductSelection: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-[#F25826]">Buy Toob in New Zealand</h2>
+      <h2 className="text-2xl font-bold text-[#F25826]">Shop</h2>
       <br />
 
       <div className="flex flex-col md:flex-row items-center md:items-start w-full gap-8">
@@ -112,17 +80,8 @@ const ProductSelection: React.FC = () => {
           </p>
           <p>Inner material: thick arctic fleece</p>
           <p>Reflective tape on the back</p>
-          <p>Size: one size (approx 57X84cm) fits most rear-mounted child seats</p>
 
-          <br />
-          <div className="full-w text-center">
-            {/* <button
-              className="bg-[#F9EAD7] text-[#F25826] px-4 py-2 rounded font-bold mt-4"
-              onClick={() => setShowCheckout(true)}
-            >
-              Buy for {currentProduct.price} NZD
-            </button> */}
-
+          <div className="full-w text-center mt-10 mb-8">
             <Link
               to={currentProduct.URL}
               className="bg-[#F9EAD7] text-[#F25826] px-8 py-4 rounded font-bold mt-4 transition-colors duration-300 hover:bg-[#F25826] hover:text-white"
@@ -143,7 +102,7 @@ const ProductSelection: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-2 right-2 text-gray-700 hover:text-black"
+              className="absolute top-2 right-2 text-gray-800 hover:text-black"
               onClick={() => setShowCheckout(false)}
             >
               ✕

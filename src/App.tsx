@@ -9,6 +9,8 @@ import { items } from "./components/app-sidebar";
 import About from "./pages/about";
 import Home from "./pages/home";
 import ProductSelection from "./pages/productselection";
+import FAQ from "./pages/FAQ";
+import AskQuestion from "./pages/AskQuestion";
 
 const App: React.FC = () => {
   return (
@@ -20,8 +22,10 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="/home" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/about" element={<About />} />
             <Route path="/productselection" element={<ProductSelection />} />
+            <Route path="/FAQ" element={<FAQ />} />
+            <Route path="/askquestion" element={<AskQuestion />} />
           </Routes>
         </main>
         <Footer items={items} />
