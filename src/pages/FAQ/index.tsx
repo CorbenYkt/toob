@@ -3,32 +3,40 @@ import { Link } from "react-router-dom";
 
 const faqData = [
   {
-    question: "Are all these blankets handmade?",
-    answer: "Yes, TOOB blankets are handmade by me (Dasha) in my cute sewing room in Wellington, Aotearoa, New Zealand."
+    question: "Are all TOOB blankets handmade?",
+    answer: "Yes! Each TOOB blanket is handmade by me (Dasha) with love and care in my sewing room in Wellington, Aotearoa New Zealand."
   },
   {
-    question: "Are there any different sizes of TOOBs?",
-    answer: "There is only one size (approx 57X84cm) which fits most rear-mounted child seats."
+    question: "Are there different sizes of TOOBs??",
+    answer: "TOOBs come in one size (approximately 57 x 84 cm), designed to fit most rear-mounted child bike seats."
   },
   {
-    question: "How do I wash TOOBs?",
-    answer: "For best care, use a gentle cycle with cold water and a mild detergent. Avoid fabric softeners and high heat. To revive fluffiness of fleece, place the blanket in the dryer in a low heat and a slow spin for a short period of time."
+    question: "How do I wash a TOOB?",
+    answer: "For best results, wash on a gentle cycle using cold water and mild detergent. Avoid fabric softeners and high heat. To fluff up the fleece, pop the blanket in the dryer on low heat and slow spin for a short time."
   },
   {
-    question: "How can I attach TOOB if there is no handle on a bike seat?",
-    answer: "We can make a customised strap. Please send your custom request to our email: …."
+    question: "What if my bike seat doesn’t have a handle to secure the TOOB?",
+    answer: "No problem! We can make a custom strap for you. Please email your request to <a href='mailto:toob4bikeseat@gmail.com'>toob4bikeseat@gmail.com</a>"
   },
   {
     question: "What are shipping terms and conditions?",
     answer: (
       <>
-        <p>We ship and process orders within 3-5 working days. The price on each page is for blankets only and shipping will be added at the checkout.</p>
+        <p><b>Processing Time:</b></p>
+        <p>
+          Orders are processed and shipped within 3–5 working days.
+        </p>
+        <p><b>Shipping Costs:</b></p>
         <ul className="list-disc list-inside mt-2 space-y-1">
-          <li>Shipping Charges: We charge a flat rate of $7 urban or $12 rural</li>
-          <li>Free Pick-Up: Customers have the option to pick up their orders free of charge from my home. We will contact you to arrange this upon order confirmation.</li>
-          <li>Transit time: The estimated transit time for orders depends on the destination and the shipping services delivery schedule.</li>
-          <li>Address accuracy: It is the customer’s responsibility to provide accurate and complete shipping information</li>
+          <li>$7 flat rate (urban)</li>
+          <li>$12 flat rate (rural).</li>
         </ul>
+        <p><b>Free Pick-Up:</b></p>
+        <p>Pick-up is available from my home in Wellington at no extra cost. We'll be in touch after your order to arrange a convenient time.</p>
+        <p><b>Transit Time:</b></p>
+        <p>Delivery times vary depending on your location and the courier’s schedule.</p>
+        <p><b>Address Accuracy:</b></p>
+        <p>Please double-check your shipping address during checkout. We are not responsible for delays or issues due to incorrect or incomplete information</p>
       </>
     )
   }
@@ -43,12 +51,8 @@ const FAQ: React.FC = () => {
 
   return (
     <section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md text-gray-800">
-      <h2 className="text-3xl font-bold text-[#F25826] mb-6">FAQ</h2>
-      <p className="mb-4">Here are some most frequently asked questions. If you didn’t find the answer you were looking for, feel free to <Link
-        to="/askquestion"
-        className="hover:text-[#F25826] font-bold text-gray-800"
-      > ask us your question!
-      </Link>
+      <h2 className="text-3xl font-bold text-[#F25826] mb-6">Frequently Asked Questions</h2>
+      <p className="mb-4">Here are some most frequently asked questions.
       </p>
 
       <div className="space-y-4 text-gray-800">

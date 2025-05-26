@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import CheckoutForm from "@/pages/checkout";
 import products from "@/data/products";
+import { useLocation } from "react-router-dom";
+
 
 const ProductSelection: React.FC = () => {
+  const [stockData, setStockData] = useState<Record<string, number>>({});
+  const location = useLocation();
+  const selectedFromState = location.state?.selected;
+
   const getInitialColor = (): keyof typeof products => {
+    if (selectedFromState && selectedFromState in products) {
+      return selectedFromState;
+    }
     const saved = sessionStorage.getItem("selectedColor");
     return (saved && saved in products) ? (saved as keyof typeof products) : "Flower TOOB";
+
   };
 
 
@@ -18,6 +27,30 @@ const ProductSelection: React.FC = () => {
     sessionStorage.setItem("selectedColor", selectedColor);
     setMainImage(products[selectedColor].images[0]);
   }, [selectedColor]);
+
+  useEffect(() => {
+    fetch("https://docs.google.com/spreadsheets/d/11mRmGLG9hK1NPZYufYUDjCTgnM1omU2ZC6Lm3Z5TMx4/gviz/tq?tqx=out:json")
+      .then((res) => res.text())
+      .then((text) => {
+        const trimmed = text.trim();
+        const jsonText = trimmed.substring(trimmed.indexOf('{'), trimmed.lastIndexOf('}') + 1);
+        const data = JSON.parse(jsonText);
+
+        const stock: Record<string, string> = {};
+
+        const rows = data.table.rows.slice(1);
+        for (const row of rows) {
+          const name = row.c[0]?.v?.trim();
+          const availability = row.c[1]?.v?.trim();
+          if (name && availability) {
+            stock[name] = availability;
+          }
+        }
+
+        setStockData(stock);
+      })
+      .catch((err) => console.error("Failed to fetch or parse stock data:", err));
+  }, []);
 
 
   const handleColorChange = (color: keyof typeof products) => {
@@ -52,22 +85,24 @@ const ProductSelection: React.FC = () => {
             ))}
           </select>
           <div className="flex flex-wrap gap-2 mt-4 w-full justify-left">
-            {Object.entries(products).flatMap(([color, product]) =>
-              product.images.map((src, index) => (
+            {Object.entries(products).map(([color, product]) => {
+              const src = product.images[0];
+              return (
                 <img
-                  key={`${color}-${index}`}
+                  key={color}
                   className={`w-12 h-auto object-cover rounded-lg cursor-pointer 
-          border ${mainImage === src ? 'border-[#F25826]' : 'border-amber-500'} 
-          hover:border-[#F25826]`}
+        border ${mainImage === src ? 'border-[#F25826]' : 'border-amber-500'} 
+        hover:border-[#F25826]`}
                   src={src}
-                  alt=""
+                  alt={color}
                   onClick={() => {
                     setMainImage(src);
                     setSelectedColor(color as keyof typeof products);
                   }}
                 />
-              ))
-            )}
+              );
+            })}
+
           </div>
         </div>
 
@@ -81,36 +116,36 @@ const ProductSelection: React.FC = () => {
           <p>Inner material: thick arctic fleece</p>
           <p>Reflective tape on the back</p>
 
-          <div className="full-w text-center mt-10 mb-8">
-            <Link
-              to={currentProduct.URL}
-              className="bg-[#F9EAD7] text-[#F25826] px-8 py-4 rounded font-bold mt-4 transition-colors duration-300 hover:bg-[#F25826] hover:text-white"
-            >
-              Buy {selectedColor} for {currentProduct.price} NZD
-            </Link>
+          <div className="text-gray-800 mb-2">
+            {stockData[selectedColor] ? (
+              <>Availability: {stockData[selectedColor]}</>
+            ) : (
+              <>Checking availability...</>
+            )}
           </div>
+
+
+          <div className="full-w text-center mt-10 mb-8">
+            {stockData[selectedColor] && stockData[selectedColor] !== "None" ? (
+              <Link
+                to={currentProduct.URL}
+                className="bg-[#F9EAD7] text-[#F25826] px-8 py-4 rounded font-bold mt-4 inline-block transition-colors duration-300 hover:bg-[#F25826] hover:text-white"
+              >
+                Buy {selectedColor} for {currentProduct.price} NZD
+              </Link>
+            ) : (
+              <span
+                className="bg-gray-300 text-gray-500 px-8 py-4 rounded font-bold mt-4 inline-block cursor-not-allowed opacity-60"
+                title="Product currently unavailable"
+              >
+                Not available
+              </span>
+            )}
+          </div>
+
         </div>
       </div>
 
-      {showCheckout && (
-        <div
-          className="fixed inset-0 bg-gray-600/50 flex justify-center items-center z-50"
-          onClick={() => setShowCheckout(false)}
-        >
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="absolute top-2 right-2 text-gray-800 hover:text-black"
-              onClick={() => setShowCheckout(false)}
-            >
-              ✕
-            </button>
-            <CheckoutForm product={selectedColor} price={currentProduct.price} />
-          </div>
-        </div>
-      )}
     </div>
   );
 

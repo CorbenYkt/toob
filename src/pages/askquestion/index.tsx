@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Copy } from 'lucide-react';
 
 const AskQuestion: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -9,7 +10,7 @@ const AskQuestion: React.FC = () => {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const response = await fetch("https://formspree.io/f/mjkwllla", {
+    const response = await fetch("https://formspree.io/f/xeogddoq", {
       method: "POST",
       headers: { Accept: "application/json" },
       body: formData,
@@ -26,9 +27,10 @@ const AskQuestion: React.FC = () => {
 
   return (
     <div className="relative max-w-md mx-auto p-6 bg-white rounded shadow text-gray-800">
-      <h1 className="text-2xl font-bold mb-4 text-[#F25826]">Ask a question/Custom request</h1>
+      <h1 className="text-2xl font-bold mb-4 text-[#F25826]">Ask a question</h1>
+      <p>If you have a custom request you could also email us directly at <a href="mailto:toob4bikeseat@gmail.com" className="font-bold hover:text-[#F25826]">toob4bikeseat@gmail.com</a></p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-4">
         <div>
           <label htmlFor="name" className="block mb-1 font-semibold text-gray-800">
             Name

@@ -12,7 +12,53 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
     <footer className="bg-[#F9EAD7] text-gray-700 p-8 w-full">
       <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h3 className="text-lg font-semibold text-[#F25826]">Contacts</h3>
+          <h3 className="text-lg font-semibold text-[#F25826]">Quick links</h3>
+          <ul className="mt-2 space-y-2">
+            {items.map((item) => {
+              const isActive = location.pathname === item.url;
+
+              return (
+                <li key={item.title}>
+                  <Link
+                    to={item.url}
+                    className={`flex items-center gap-2 transition-colors duration-200 ${isActive
+                      ? "text-[#F25826] font-bold"
+                      : "hover:text-[#F25826]"
+                      }`}
+                  >
+                    {/* <item.icon /> */}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+
+            })}
+            {/* <li key="contact">
+              <Link
+                to="/askquestion"
+                className="flex items-center gap-2 transition-colors duration-200 hover:text-[#F25826]"
+              >
+                <span>Contact</span>
+              </Link>
+            </li> */}
+          </ul>
+        </div>
+
+        <div className="colse-span-2 md:col-span-2">
+          <h3 className="text-lg font-semibold text-[#F25826]">Waterproof and windproof handmade TOOB blankets for children's bike seats</h3>
+          <ul className="mt-2 space-y-2">
+            <li>
+              <a
+                href="https://www.facebook.com/Toob4bikeseat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-700 hover:text-[#F25826]"
+              >
+                <Facebook className="w-8 h-8" />
+              </a>
+            </li>
+          </ul>
+          {/* <h3 className="text-lg font-semibold text-[#F25826]">Contacts</h3>
 
           <ul className="mt-2 space-y-2">
             <li>
@@ -26,11 +72,11 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
             </li>
             <li>
               <a
-                href="mailto:dariya.cherkashina@gmail.com"
+                href="mailto:toob4bikeseat@gmail.com"
                 className="flex items-center gap-2 text-gray-700 hover:text-[#F25826]"
               >
                 <Mail className="w-5 h-5" />
-                dariya.cherkashina@gmail.com
+                toob4bikeseat@gmail.com
               </a>
             </li>
             <li>
@@ -54,42 +100,20 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
               </Link>
             </li>
 
-          </ul>
+          </ul> */}
         </div>
 
-        <div>
+        {/* <div>
           <h3 className="text-lg font-semibold text-[#F25826]">TOOB</h3>
           <p className="mt-2 text-gray-700">
             Handmade TOOB blankets for child bike seats.
           </p>
-        </div>
+        </div> */}
 
-        <div>
-          <h3 className="text-lg font-semibold text-[#F25826]">Links</h3>
-          <ul className="mt-2 space-y-2">
-            {items.map((item) => {
-              const isActive = location.pathname === item.url;
 
-              return (
-                <li key={item.title}>
-                  <Link
-                    to={item.url}
-                    className={`flex items-center gap-2 transition-colors duration-200 ${isActive
-                      ? "text-[#F25826] font-bold"
-                      : "hover:text-[#F25826]"
-                      }`}
-                  >
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
       </div>
 
-      <div className="mt-20 text-center text-sm">
+      <div className="mt-10 text-center text-sm">
         ©2025{" "}
         <a
           href="https://corbenykt.github.io/"

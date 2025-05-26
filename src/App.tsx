@@ -10,7 +10,7 @@ import About from "./pages/about";
 import Home from "./pages/home";
 import ProductSelection from "./pages/productselection";
 import FAQ from "./pages/FAQ";
-import AskQuestion from "./pages/AskQuestion";
+import AskQuestion from "./pages/askquestion";
 
 const App: React.FC = () => {
   return (

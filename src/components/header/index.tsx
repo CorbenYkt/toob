@@ -12,18 +12,18 @@ const Header: React.FC<HeaderProps> = ({ items }) => {
   const location = useLocation();
 
   return (
-    <header className="text-gray-800 p-8 w-full shadow-md">
+    <header className="text-gray-800 p-6 w-full shadow-md">
       <div className="max-w-4xl mx-auto flex justify-between items-center">
-        <Link to="/" className="w-3/4 sm:w-1/2 lg:w-[50%]">
+        <Link to="/" className="flex-shrink-0">
           <img
             src="img/logo.png"
             alt="TOOB logo"
-            className="w-full"
+            className="w-32 sm:w-40 lg:w-48 max-w-full h-auto"
           />
         </Link>
 
-        <nav className="flex items-center justify-start w-full pl-10">
-          <ul className="flex space-x-8">
+        <nav className="flex items-center justify-start w-full pl-4">
+          <ul className="flex space-x-4 md:space-x-10 md:ml-10">
             {items.map((item) => {
               const isActive = location.pathname === item.url;
 
@@ -31,12 +31,10 @@ const Header: React.FC<HeaderProps> = ({ items }) => {
                 <li key={item.title}>
                   <Link
                     to={item.url}
-                    className={`flex items-center gap-2 transition-colors duration-200 ${isActive
-                      ? "text-[#F25826] font-bold"
-                      : "hover:text-[#F25826]"
+                    className={`flex items-center gap-2 transition-colors duration-200 ${isActive ? "text-[#F25826] font-bold" : "hover:text-[#F25826]"
                       }`}
                   >
-                    <item.icon />
+                    <item.icon className="md:hidden" />
                     <span className="hidden md:inline">{item.title}</span>
 
                     {item.title === "Shop" && (

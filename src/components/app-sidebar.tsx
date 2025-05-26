@@ -1,4 +1,4 @@
-import { HelpCircle, User, House, LucideShoppingBasket } from "lucide-react";
+import { HelpCircle, User, House, LucideShoppingBasket, MessageCircle  } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
     Sidebar,
@@ -24,7 +24,7 @@ export const items: ItemType[] = [
         icon: House,
     },
     {
-        title: "About",
+        title: "About Us",
         url: "/about",
         icon: User,
     },
@@ -37,6 +37,11 @@ export const items: ItemType[] = [
         title: "FAQ",
         url: "/FAQ",
         icon: HelpCircle,
+    },
+    {
+        title: "Contact",
+        url: "/askquestion",
+        icon: MessageCircle ,
     },
 ];
 

@@ -4,7 +4,7 @@ import products from "@/data/products";
 
 const NewCollection: React.FC = () => {
     const navigate = useNavigate();
-    const firstFourProducts = Object.entries(products).slice(0, 4);
+    const firstFourProducts = Object.entries(products);
 
     const handleProductClick = (productName: string) => {
         sessionStorage.setItem("selectedColor", productName);
@@ -20,19 +20,19 @@ const NewCollection: React.FC = () => {
                 {firstFourProducts.map(([name, product], index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-lg p-4 shadow-md border border-gray-200 flex flex-col items-center"
+                        className="bg-white  flex-col items-center"
                     >
                         <img
                             src={product.images[0]}
                             alt={name}
                             className="w-full h-64 object-cover mb-4 rounded"
                         />
-                        <button
+                        {/* <button
                             onClick={() => handleProductClick(name)}
                             className="font-semibold text-lg text-center text-[#F25826] hover:cursor-pointer"
                         >
                             {name}
-                        </button>
+                        </button> */}
                     </div>
                 ))}
             </div>
