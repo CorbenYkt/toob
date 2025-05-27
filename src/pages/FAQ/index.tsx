@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const faqData = [
+  
   {
     question: "Are all TOOB blankets handmade?",
     answer: "Yes! Each TOOB blanket is handmade by me (Dasha) with love and care in my sewing room in Wellington, Aotearoa New Zealand."
@@ -16,7 +16,15 @@ const faqData = [
   },
   {
     question: "What if my bike seat doesn’t have a handle to secure the TOOB?",
-    answer: "No problem! We can make a custom strap for you. Please email your request to <a href='mailto:toob4bikeseat@gmail.com'>toob4bikeseat@gmail.com</a>"
+    answer: (
+      <>
+        No problem! We can make a custom strap for you. Please email your request to{' '}
+        <a href="mailto:toob4bikeseat@gmail.com" className="font-bold hover:text-[#F25826]">
+          toob4bikeseat@gmail.com
+        </a>
+      </>
+    )
+
   },
   {
     question: "What are shipping terms and conditions?",
@@ -26,17 +34,33 @@ const faqData = [
         <p>
           Orders are processed and shipped within 3–5 working days.
         </p>
-        <p><b>Shipping Costs:</b></p>
-        <ul className="list-disc list-inside mt-2 space-y-1">
-          <li>$7 flat rate (urban)</li>
-          <li>$12 flat rate (rural).</li>
+        <p className="mt-4"><b>Shipping Costs:</b></p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>$10 flat rate (urban)</li>
+          <li>$12 flat rate (rural)</li>
+          <li>$40 shipping to Australia</li>
         </ul>
-        <p><b>Free Pick-Up:</b></p>
+        <p className="mt-4"><b>Free Pick-Up:</b></p>
         <p>Pick-up is available from my home in Wellington at no extra cost. We'll be in touch after your order to arrange a convenient time.</p>
-        <p><b>Transit Time:</b></p>
+        <p className="mt-4"><b>Transit Time:</b></p>
         <p>Delivery times vary depending on your location and the courier’s schedule.</p>
-        <p><b>Address Accuracy:</b></p>
+        <p className="mt-4"><b>Address Accuracy:</b></p>
         <p>Please double-check your shipping address during checkout. We are not responsible for delays or issues due to incorrect or incomplete information</p>
+      </>
+    )
+  },
+  {
+    question: "How can I order more than one TOOB with different prints and get them shipped together?",
+    answer: (
+      <>
+        <p>If you'd like to purchase more than one TOOB with different prints, please note that our checkout system currently has limitations when processing multiple prints in a single order. To work around this, please place two separate orders:</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>For the first order, select your preferred shipping method.
+          </li>
+          <li>For the second order, choose the Free Pick-Up option.
+          </li>
+        </ul>
+        <p className="mt-4">We will then combine both orders into one parcel for shipping.</p>
       </>
     )
   }

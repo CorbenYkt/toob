@@ -21,7 +21,6 @@ const ProductSelection: React.FC = () => {
 
   const [selectedColor, setSelectedColor] = useState<keyof typeof products>(getInitialColor);
   const [mainImage, setMainImage] = useState(products[getInitialColor()].images[0]);
-  const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
     sessionStorage.setItem("selectedColor", selectedColor);
@@ -126,7 +125,7 @@ const ProductSelection: React.FC = () => {
 
 
           <div className="full-w text-center mt-10 mb-8">
-            {stockData[selectedColor] && stockData[selectedColor] !== "None" ? (
+            {stockData[selectedColor] && stockData[selectedColor] !== "Out of stock" ? (
               <Link
                 to={currentProduct.URL}
                 className="bg-[#F9EAD7] text-[#F25826] px-8 py-4 rounded font-bold mt-4 inline-block transition-colors duration-300 hover:bg-[#F25826] hover:text-white"
