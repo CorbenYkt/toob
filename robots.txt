@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toob.co.nz/sitemap.xml
