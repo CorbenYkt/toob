@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const faqData = [
-  
+
   {
     question: "Are all TOOB blankets handmade?",
     answer: "Yes! Each TOOB blanket is handmade by me (Dasha) with love and care in my sewing room in Wellington, Aotearoa New Zealand."
   },
   {
-    question: "Are there different sizes of TOOBs??",
-    answer: "TOOBs come in one size (approximately 57 x 84 cm), designed to fit most rear-mounted child bike seats."
+    question: "Are there different sizes of TOOB?",
+    answer: "TOOB blankets come in one size (approximately 57 x 84 cm), designed to fit most rear-mounted child bike seats."
   },
   {
     question: "How do I wash a TOOB?",
@@ -74,12 +74,13 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md text-gray-800">
-      <h2 className="text-3xl font-bold text-[#F25826] mb-6">Frequently Asked Questions</h2>
+    <section className="max-w-4xl mx-auto p-4">
+      <h2 className="text-2xl font-bold text-[#F25826]">Frequently Asked Questions</h2>
+      <br></br>
       <p className="mb-4">Here are some most frequently asked questions.
       </p>
 
-      <div className="space-y-4 text-gray-800">
+      <article className="space-y-4 text-gray-800">
         {faqData.map(({ question, answer }, index) => (
           <div key={index} className="border border-gray-200 rounded-md ">
             <button
@@ -104,7 +105,7 @@ const FAQ: React.FC = () => {
             )}
           </div>
         ))}
-      </div>
+      </article>
     </section>
   );
 };

@@ -63,7 +63,7 @@ const CollageCollection: React.FC = () => {
               key={image.src}
               style={{ gridArea: area }}
               className="relative cursor-pointer overflow-hidden rounded shadow group"
-              onClick={() => navigate("/productselection", { state: { selected: image.name } })}
+              onClick={() => navigate("/shop", { state: { selected: image.name } })}
             >
               <div className="w-full h-full">
                 <img

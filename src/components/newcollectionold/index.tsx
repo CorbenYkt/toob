@@ -8,7 +8,7 @@ const NewCollection: React.FC = () => {
 
     const handleProductClick = (productName: string) => {
         sessionStorage.setItem("selectedColor", productName);
-        navigate("/productselection");
+        navigate("/shop");
     };
 
     return (
