@@ -36,11 +36,10 @@ const faqData = [
         </p>
         <p className="mt-4"><b>Shipping Costs:</b></p>
         <ul className="list-disc list-inside space-y-1">
-          <li>$10 flat rate (urban)</li>
-          <li>$12 flat rate (rural)</li>
-          <li>$40 shipping to Australia</li>
+          <li>Free shipping within NZ</li>
+          <li>$30 shipping to Australia</li>
         </ul>
-        <p className="mt-4"><b>Free Pick-Up:</b></p>
+        <p className="mt-4"><b>Free Pick Up:</b></p>
         <p>Pick-up is available from my home in Wellington at no extra cost. We'll be in touch after your order to arrange a convenient time.</p>
         <p className="mt-4"><b>Transit Time:</b></p>
         <p>Delivery times vary depending on your location and the courier’s schedule.</p>

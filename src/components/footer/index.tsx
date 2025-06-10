@@ -55,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({ items }) => {
 
       </div>
 
-      <div className="mt-10 text-center text-sm">
+      <div className="mt-10 pb-10 text-center text-sm">
         ©2025{" "}
         <a
           href="https://corbenykt.github.io/"
